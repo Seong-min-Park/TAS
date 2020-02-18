@@ -1,0 +1,94 @@
+Main Function with logger : Logger(dir=output/search-shape/cifar10-ResNet20-CIFARX-Gumbel_0.1_5-0.57, use-tf=False, writer=None)
+Arguments : -------------------------------
+FLOP_ratio       : 0.57
+FLOP_tolerant    : 0.05
+FLOP_weight      : 2.0
+ablation_num_select : None
+batch_size       : 256
+cutout_length    : -1
+data_path        : /data//cifar.python
+dataset          : cifar10
+eval_frequency   : 1
+gumbel_tau_max   : 5.0
+gumbel_tau_min   : 0.1
+model_config     : ./configs/archs/CIFAR-ResNet20.config
+optim_config     : ./configs/search-opts/CIFARX.config
+print_freq       : 100
+print_freq_eval  : 200
+procedure        : search-v2
+rand_seed        : 86554
+resume           : None
+save_dir         : ./output/search-shape/cifar10-ResNet20-CIFARX-Gumbel_0.1_5-0.57
+split_path       : ./.latent-data/splits/cifar10-0.5.pth
+workers          : 6
+Python  Version  : 3.7.4 (default, Aug 13 2019, 20:35:49)  [GCC 7.3.0]
+Pillow  Version  : 6.2.0
+PyTorch Version  : 1.3.1
+cuDNN   Version  : 7603
+CUDA available   : True
+CUDA GPU numbers : 3
+CUDA_VISIBLE_DEVICES : None
+./configs/archs/CIFAR-ResNet20.config
+Configure(dataset='cifar', arch='resnet', depth=20, module='ResNetBasicblock', super_type='basic', zero_init_residual=False, class_num=10, search_mode='shape')
+./configs/search-opts/CIFARX.config
+Configure(scheduler='cos', eta_min=0.0, epochs=600, warmup=0, optim='SGD', LR=0.1, decay=0.0005, momentum=0.9, nesterov=True, criterion='Softmax', arch_LR=0.001, arch_decay=0.001, class_num=10, FLOP=40.813194)
+Model Information : SearchShapeCifarResNet : Depth : 20 , Layers for each block : 3
+stage=0 ::: depth-block-choices=(1, 2, 3) for 3 blocks.
+stage=0, ilayer=00/03, block=001, iC= 16, oC= 16, stride=1
+stage=0, ilayer=01/03, block=002, iC= 16, oC= 16, stride=1
+stage=0, ilayer=02/03, block=003, iC= 16, oC= 16, stride=1
+stage=1 ::: depth-block-choices=(1, 2, 3) for 3 blocks.
+stage=1, ilayer=00/03, block=004, iC= 16, oC= 32, stride=2
+stage=1, ilayer=01/03, block=005, iC= 32, oC= 32, stride=1
+stage=1, ilayer=02/03, block=006, iC= 32, oC= 32, stride=1
+stage=2 ::: depth-block-choices=(1, 2, 3) for 3 blocks.
+stage=2, ilayer=00/03, block=007, iC= 32, oC= 64, stride=2
+stage=2, ilayer=01/03, block=008, iC= 64, oC= 64, stride=1
+stage=2, ilayer=02/03, block=009, iC= 64, oC= 64, stride=1
+MAX_FLOP = 40.813194 M
+Params   = 0.279089 M
+train_data : Dataset CIFAR10
+    Number of datapoints: 50000
+    Root location: /data//cifar.python
+    Split: Train
+    StandardTransform
+Transform: Compose(
+               RandomHorizontalFlip(p=0.5)
+               RandomCrop(size=(32, 32), padding=4)
+               ToTensor()
+               Normalize(mean=[0.4913725490196078, 0.4823529411764706, 0.4466666666666667], std=[0.24705882352941178, 0.24352941176470588, 0.2615686274509804])
+           )
+search-data: SearchDataset(name=cifar10, train=25000, valid=25000, version=V1)
+search_train_loader : 25000 samples
+search_valid_loader : 25000 samples
+base-optimizer : SGD (
+Parameter Group 0
+    dampening: 0
+    initial_lr: 0.1
+    lr: 0.1
+    momentum: 0.9
+    nesterov: True
+    weight_decay: 0.0005
+)
+arch-optimizer : Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.5, 0.999)
+    eps: 1e-08
+    lr: 0.001
+    weight_decay: 0.001
+
+Parameter Group 1
+    amsgrad: False
+    betas: (0.5, 0.999)
+    eps: 1e-08
+    lr: 0.001
+    weight_decay: 0.001
+)
+scheduler      : CosineAnnealingLR(warmup=0, max-epoch=600, current::epoch=0, iter=0.00, type=cosine, T-max=600, eta-min=0.0)
+criterion      : CrossEntropyLoss()
+=> do not find the last-info file : output/search-shape/cifar10-ResNet20-CIFARX-Gumbel_0.1_5-0.57/seed-86554-last-info.pth or resume : None
+
+***[2020-02-03 04:52:43]*** start epoch=000/600 Time Left: [00:00:00], LR=[0.100000 ~ 0.100000], scheduler=CosineAnnealingLR(warmup=0, max-epoch=600, current::epoch=0, iter=0.00, type=cosine, T-max=600, eta-min=0.0), tau=5.0, FLOP=40.81
+[Search] : epoch=000/600, FLOP-Require=23.26 MB, FLOP-WEIGHT=2.00
+**TRAIN** [2020-02-03 04:52:50] [epoch=000/600][000/098] Time 6.84 (6.84) Data 0.34 (0.34) Base-Loss 2.307 (2.307)  Prec@1 6.25 (6.25) Prec@5 42.97 (42.97) Acls-loss 2.303 (2.303) FLOP-Loss -2.385 (-2.385) Arch-Loss -2.467 (-2.467)

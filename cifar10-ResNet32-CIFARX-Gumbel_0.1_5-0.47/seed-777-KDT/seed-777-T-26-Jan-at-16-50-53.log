@@ -1,0 +1,31 @@
+Main Function with logger : Logger(dir=output/search-shape/cifar10-ResNet32-CIFARX-Gumbel_0.1_5-0.47/seed-777-KDT, use-tf=False, writer=None)
+Arguments : -------------------------------
+KD_alpha         : 0.9
+KD_checkpoint    : ./.latent-data/basemodels/cifar10/ResNet32.pth
+KD_temperature   : 4.0
+batch_size       : 256
+cutout_length    : -1
+data_path        : /data//cifar.python
+dataset          : cifar10
+eval_frequency   : 1
+init_model       : None
+model_config     : ./output/search-shape/cifar10-ResNet32-CIFARX-Gumbel_0.1_5-0.47/seed-777-last.config
+optim_config     : ./configs/opts/CIFAR-E300-W5-L1-COS.config
+print_freq       : 100
+print_freq_eval  : 200
+procedure        : Simple-KD
+rand_seed        : 777
+resume           : None
+save_dir         : ./output/search-shape/cifar10-ResNet32-CIFARX-Gumbel_0.1_5-0.47/seed-777-KDT
+workers          : 6
+Python  Version  : 3.7.4 (default, Aug 13 2019, 20:35:49)  [GCC 7.3.0]
+Pillow  Version  : 6.2.0
+PyTorch Version  : 1.3.1
+cuDNN   Version  : 7603
+CUDA available   : True
+CUDA GPU numbers : 3
+CUDA_VISIBLE_DEVICES : None
+./output/search-shape/cifar10-ResNet32-CIFARX-Gumbel_0.1_5-0.47/seed-777-last.config
+Configure(dataset='cifar', arch='resnet', depth=32, module='ResNetBasicblock', super_type='infer-shape', zero_init_residual=False, class_num=10, search_mode='shape', xchannels=[3, 16, 14, 8, 12, 9, 14, 16, 4, 4, 4, 4, 32, 32, 32, 22, 32, 32, 28, 9, 25, 9, 64, 64, 64, 64, 64, 64, 19, 19, 19, 19], xblocks=[3, 3, 3], estimated_FLOP=32.172222)
+./configs/opts/CIFAR-E300-W5-L1-COS.config
+Configure(scheduler='cos', eta_min=0.0, epochs=300, warmup=5, optim='SGD', LR=0.1, decay=0.0005, momentum=0.9, nesterov=True, criterion='Softmax', auxiliary=-1.0, class_num=10, KD_alpha=0.9, KD_temperature=4.0)

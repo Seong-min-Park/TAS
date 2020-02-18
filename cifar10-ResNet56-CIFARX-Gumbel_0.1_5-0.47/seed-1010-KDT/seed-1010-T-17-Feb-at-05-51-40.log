@@ -1,0 +1,1576 @@
+Main Function with logger : Logger(dir=output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT, use-tf=False, writer=None)
+Arguments : -------------------------------
+KD_alpha         : 0.9
+KD_checkpoint    : ./.latent-data/basemodels/cifar10/ResNet56.pth
+KD_temperature   : 4.0
+batch_size       : 256
+cutout_length    : -1
+data_path        : /data//cifar.python
+dataset          : cifar10
+eval_frequency   : 1
+init_model       : None
+model_config     : ./output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-last.config
+optim_config     : ./configs/opts/CIFAR-E300-W5-L1-COS.config
+print_freq       : 100
+print_freq_eval  : 200
+procedure        : Simple-KD
+rand_seed        : 1010
+resume           : None
+save_dir         : ./output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT
+workers          : 6
+Python  Version  : 3.7.4 (default, Aug 13 2019, 20:35:49)  [GCC 7.3.0]
+Pillow  Version  : 6.2.0
+PyTorch Version  : 1.3.1
+cuDNN   Version  : 7603
+CUDA available   : True
+CUDA GPU numbers : 3
+CUDA_VISIBLE_DEVICES : None
+./output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-last.config
+Configure(dataset='cifar', arch='resnet', depth=56, module='ResNetBasicblock', super_type='infer-shape', zero_init_residual=False, class_num=10, search_mode='shape', xchannels=[3, 16, 12, 12, 11, 16, 12, 12, 16, 16, 16, 16, 12, 14, 12, 12, 8, 11, 11, 12, 32, 28, 25, 25, 28, 19, 32, 25, 22, 22, 16, 22, 28, 28, 19, 25, 25, 32, 57, 44, 57, 51, 51, 44, 57, 64, 64, 51, 51, 57, 51, 51, 44, 64, 57, 57], xblocks=[5, 5, 5], estimated_FLOP=51.181114)
+./configs/opts/CIFAR-E300-W5-L1-COS.config
+Configure(scheduler='cos', eta_min=0.0, epochs=300, warmup=5, optim='SGD', LR=0.1, decay=0.0005, momentum=0.9, nesterov=True, criterion='Softmax', auxiliary=-1.0, class_num=10, KD_alpha=0.9, KD_temperature=4.0)
+Student ====>>>>:
+InferCifarResNet(
+  (layers): ModuleList(
+    (0): ConvBNReLU(
+      (conv): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (1): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(12, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(16, 12, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (2): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(12, 11, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(11, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(11, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(12, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (3): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(12, 12, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(16, 12, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (4): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(12, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(12, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (5): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (6): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(32, 28, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (avg): AvgPool2d(kernel_size=2, stride=2, padding=0)
+        (conv): Conv2d(16, 28, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      )
+    )
+    (7): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(28, 25, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(25, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(25, 25, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(25, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(28, 25, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(25, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (8): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(25, 28, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(28, 19, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(19, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(25, 19, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(19, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (9): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(19, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(32, 25, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(25, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(19, 25, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(25, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (10): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(25, 22, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(22, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(22, 22, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(22, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(25, 22, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(22, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (11): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(22, 57, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(57, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(57, 44, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(44, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (avg): AvgPool2d(kernel_size=2, stride=2, padding=0)
+        (conv): Conv2d(22, 44, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      )
+    )
+    (12): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(44, 57, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(57, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(57, 51, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(51, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(44, 51, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(51, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (13): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(51, 51, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(51, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(51, 44, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(44, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(51, 44, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(44, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (14): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(44, 57, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(57, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(57, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(44, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (15): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(64, 51, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(51, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): ConvBNReLU(
+        (conv): Conv2d(64, 51, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn): BatchNorm2d(51, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (avgpool): AvgPool2d(kernel_size=8, stride=8, padding=0)
+  (classifier): Linear(in_features=51, out_features=10, bias=True)
+)
+Teacher ====>>>>:
+CifarResNet(
+  (layers): ModuleList(
+    (0): ConvBNReLU(
+      (conv): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (1): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (2): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (3): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (4): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (5): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (6): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (7): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (8): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (9): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (10): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): Downsample(
+        (avg): AvgPool2d(kernel_size=2, stride=2, padding=0)
+        (conv): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      )
+    )
+    (11): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (12): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (13): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (14): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (15): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (16): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (17): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (18): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (19): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (downsample): Downsample(
+        (avg): AvgPool2d(kernel_size=2, stride=2, padding=0)
+        (conv): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      )
+    )
+    (20): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (21): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (22): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (23): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (24): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (25): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (26): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (27): ResNetBasicblock(
+      (conv_a): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (conv_b): ConvBNReLU(
+        (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (avgpool): AvgPool2d(kernel_size=8, stride=8, padding=0)
+  (classifier): Linear(in_features=64, out_features=10, bias=True)
+)
+model information : InferWidthCifarResNet : Depth : 56 , Layers for each block : 9
+stage=0, ilayer=00/09, block=001, iCs=[16, 12, 12], oC= 12, stride=1
+stage=0, ilayer=01/09, block=002, iCs=[12, 11, 16], oC= 16, stride=1
+stage=0, ilayer=02/09, block=003, iCs=[16, 12, 12], oC= 12, stride=1
+stage=0, ilayer=03/09, block=004, iCs=[12, 16, 16], oC= 16, stride=1
+stage=0, ilayer=04/09, block=005, iCs=[16, 16, 16], oC= 16, stride=1
+stage=1, ilayer=00/09, block=006, iCs=[16, 32, 28], oC= 28, stride=2
+stage=1, ilayer=01/09, block=007, iCs=[28, 25, 25], oC= 25, stride=1
+stage=1, ilayer=02/09, block=008, iCs=[25, 28, 19], oC= 19, stride=1
+stage=1, ilayer=03/09, block=009, iCs=[19, 32, 25], oC= 25, stride=1
+stage=1, ilayer=04/09, block=010, iCs=[25, 22, 22], oC= 22, stride=1
+stage=2, ilayer=00/09, block=011, iCs=[22, 57, 44], oC= 44, stride=2
+stage=2, ilayer=01/09, block=012, iCs=[44, 57, 51], oC= 51, stride=1
+stage=2, ilayer=02/09, block=013, iCs=[51, 51, 44], oC= 44, stride=1
+stage=2, ilayer=03/09, block=014, iCs=[44, 57, 64], oC= 64, stride=1
+stage=2, ilayer=04/09, block=015, iCs=[64, 64, 51], oC= 51, stride=1
+--------------------------------------------------
+Params=0.34 MB, FLOPs=51.15 M ... = 0.05 G
+--------------------------------------------------
+train_data : Dataset CIFAR10
+    Number of datapoints: 50000
+    Root location: /data//cifar.python
+    Split: Train
+    StandardTransform
+Transform: Compose(
+               RandomHorizontalFlip(p=0.5)
+               RandomCrop(size=(32, 32), padding=4)
+               ToTensor()
+               Normalize(mean=[0.4913725490196078, 0.4823529411764706, 0.4466666666666667], std=[0.24705882352941178, 0.24352941176470588, 0.2615686274509804])
+           )
+valid_data : Dataset CIFAR10
+    Number of datapoints: 10000
+    Root location: /data//cifar.python
+    Split: Test
+    StandardTransform
+Transform: Compose(
+               ToTensor()
+               Normalize(mean=[0.4913725490196078, 0.4823529411764706, 0.4466666666666667], std=[0.24705882352941178, 0.24352941176470588, 0.2615686274509804])
+           )
+optimizer  : SGD (
+Parameter Group 0
+    dampening: 0
+    initial_lr: 0.1
+    lr: 0.1
+    momentum: 0.9
+    nesterov: True
+    weight_decay: 0.0005
+)
+scheduler  : CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=0, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+criterion  : CrossEntropyLoss()
+=> do not find the last-info file : output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:51:44]*** start epoch=000/305 Time Left: [00:00:00], LR=[0.000000 ~ 0.000000], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=0, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:51:50] [epoch=000/305][000/196] #LR=[0.000000~0.000000] epoch=000, iter=0.00# Time 5.79 (5.79) Data 0.24 (0.24) Loss 11.575 (11.575)  Prec@1 10.16 (10.16) Prec@5 46.09 (46.09) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:52:04] [epoch=000/305][100/196] #LR=[0.010204~0.010204] epoch=000, iter=0.51# Time 0.14 (0.19) Data 0.00 (0.00) Loss 9.927 (11.208)  Prec@1 16.41 (12.79) Prec@5 77.34 (58.09) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:52:17] [epoch=000/305][195/196] #LR=[0.019898~0.019898] epoch=000, iter=0.99# Time 0.50 (0.17) Data 0.00 (0.00) Loss 9.579 (10.404)  Prec@1 32.50 (17.80) Prec@5 77.50 (69.74) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=82.19, @5=30.26
+ **TRAIN** Prec@1 17.80 Prec@5 69.74 Error@1 82.20 Error@5 30.26 Loss:10.404
+***[2020-02-17 05:52:17]*** TRAIN [epoch=000/305] loss = 10.403686, accuracy-1 = 17.80, accuracy-5 = 69.74
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:52:17] [epoch=000/305][000/040] Time 0.37 (0.37) Data 0.25 (0.25) Loss 9.746 (9.746)  Prec@1 33.20 (33.20) Prec@5 87.89 (87.89) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:52:21] [epoch=000/305][039/040] Time 0.14 (0.10) Data 0.00 (0.01) Loss 12.382 (10.254)  Prec@1 25.00 (28.82) Prec@5 93.75 (84.74) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=65.64, @5=15.06
+ **VALID** Prec@1 28.82 Prec@5 84.74 Error@1 71.18 Error@5 15.26 Loss:10.254
+***[2020-02-17 05:52:21]*** VALID [epoch=000/305] loss = 10.254188, accuracy@1 = 28.82, accuracy@5 = 84.74 | Best-Valid-Acc@1=-1.00, Error@1=101.00
+Currently, the best validation accuracy found at 000-epoch :: acc@1=28.82, acc@5=84.74, error@1=71.18, error@5=15.26, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 333447168 bytes, 333447.17 KB, 333.45 MB, 0.33 GB.]
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:52:21]*** start epoch=001/305 Time Left: [03:07:26], LR=[0.020000 ~ 0.020000], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=1, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:52:21] [epoch=001/305][000/196] #LR=[0.020000~0.020000] epoch=001, iter=0.00# Time 0.49 (0.49) Data 0.28 (0.28) Loss 9.119 (9.119)  Prec@1 23.83 (23.83) Prec@5 82.03 (82.03) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:52:35] [epoch=001/305][100/196] #LR=[0.030204~0.030204] epoch=001, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 7.951 (8.428)  Prec@1 44.14 (35.61) Prec@5 90.62 (88.08) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:52:48] [epoch=001/305][195/196] #LR=[0.039898~0.039898] epoch=001, iter=0.99# Time 0.15 (0.14) Data 0.00 (0.00) Loss 6.962 (7.900)  Prec@1 58.75 (40.74) Prec@5 88.75 (89.86) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=59.25, @5=10.14
+ **TRAIN** Prec@1 40.74 Prec@5 89.86 Error@1 59.26 Error@5 10.14 Loss:7.900
+***[2020-02-17 05:52:48]*** TRAIN [epoch=001/305] loss = 7.899567, accuracy-1 = 40.74, accuracy-5 = 89.86
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:52:49] [epoch=001/305][000/040] Time 0.36 (0.36) Data 0.23 (0.23) Loss 8.455 (8.455)  Prec@1 47.27 (47.27) Prec@5 89.45 (89.45) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:52:52] [epoch=001/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 10.432 (8.786)  Prec@1 31.25 (43.74) Prec@5 93.75 (91.00) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=50.72, @5=8.80
+ **VALID** Prec@1 43.74 Prec@5 91.00 Error@1 56.26 Error@5 9.00 Loss:8.786
+***[2020-02-17 05:52:52]*** VALID [epoch=001/305] loss = 8.786238, accuracy@1 = 43.74, accuracy@5 = 91.00 | Best-Valid-Acc@1=28.82, Error@1=71.18
+Currently, the best validation accuracy found at 001-epoch :: acc@1=43.74, acc@5=91.00, error@1=56.26, error@5=9.00, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:52:52]*** start epoch=002/305 Time Left: [02:52:46], LR=[0.040000 ~ 0.040000], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=2, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:52:53] [epoch=002/305][000/196] #LR=[0.040000~0.040000] epoch=002, iter=0.00# Time 0.45 (0.45) Data 0.27 (0.27) Loss 6.989 (6.989)  Prec@1 50.78 (50.78) Prec@5 94.53 (94.53) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:53:07] [epoch=002/305][100/196] #LR=[0.050204~0.050204] epoch=002, iter=0.51# Time 0.14 (0.15) Data 0.00 (0.00) Loss 6.005 (6.217)  Prec@1 51.56 (55.45) Prec@5 95.31 (94.53) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:53:20] [epoch=002/305][195/196] #LR=[0.059898~0.059898] epoch=002, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 4.604 (5.837)  Prec@1 75.00 (58.57) Prec@5 91.25 (95.14) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=41.43, @5=4.86
+ **TRAIN** Prec@1 58.57 Prec@5 95.14 Error@1 41.43 Error@5 4.86 Loss:5.837
+***[2020-02-17 05:53:20]*** TRAIN [epoch=002/305] loss = 5.837010, accuracy-1 = 58.57, accuracy-5 = 95.14
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:53:21] [epoch=002/305][000/040] Time 0.37 (0.37) Data 0.23 (0.23) Loss 8.369 (8.369)  Prec@1 50.00 (50.00) Prec@5 90.62 (90.62) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:53:24] [epoch=002/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 7.012 (8.141)  Prec@1 56.25 (49.33) Prec@5 100.00 (91.35) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=45.13, @5=8.45
+ **VALID** Prec@1 49.33 Prec@5 91.35 Error@1 50.67 Error@5 8.65 Loss:8.141
+***[2020-02-17 05:53:24]*** VALID [epoch=002/305] loss = 8.140504, accuracy@1 = 49.33, accuracy@5 = 91.35 | Best-Valid-Acc@1=43.74, Error@1=56.26
+Currently, the best validation accuracy found at 002-epoch :: acc@1=49.33, acc@5=91.35, error@1=50.67, error@5=8.65, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:53:24]*** start epoch=003/305 Time Left: [02:48:37], LR=[0.060000 ~ 0.060000], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=3, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:53:25] [epoch=003/305][000/196] #LR=[0.060000~0.060000] epoch=003, iter=0.00# Time 0.46 (0.46) Data 0.29 (0.29) Loss 5.797 (5.797)  Prec@1 59.77 (59.77) Prec@5 96.48 (96.48) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:53:39] [epoch=003/305][100/196] #LR=[0.070204~0.070204] epoch=003, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 4.491 (4.880)  Prec@1 68.36 (65.95) Prec@5 97.27 (96.78) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:53:52] [epoch=003/305][195/196] #LR=[0.079898~0.079898] epoch=003, iter=0.99# Time 0.14 (0.14) Data 0.00 (0.00) Loss 4.819 (4.730)  Prec@1 67.50 (67.02) Prec@5 96.25 (97.02) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=32.98, @5=2.98
+ **TRAIN** Prec@1 67.02 Prec@5 97.02 Error@1 32.98 Error@5 2.98 Loss:4.730
+***[2020-02-17 05:53:52]*** TRAIN [epoch=003/305] loss = 4.729896, accuracy-1 = 67.02, accuracy-5 = 97.02
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:53:52] [epoch=003/305][000/040] Time 0.39 (0.39) Data 0.27 (0.27) Loss 5.860 (5.860)  Prec@1 62.89 (62.89) Prec@5 95.31 (95.31) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:53:56] [epoch=003/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 6.517 (5.664)  Prec@1 56.25 (62.72) Prec@5 93.75 (96.03) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=31.74, @5=3.77
+ **VALID** Prec@1 62.72 Prec@5 96.03 Error@1 37.28 Error@5 3.97 Loss:5.664
+***[2020-02-17 05:53:56]*** VALID [epoch=003/305] loss = 5.663914, accuracy@1 = 62.72, accuracy@5 = 96.03 | Best-Valid-Acc@1=49.33, Error@1=50.67
+Currently, the best validation accuracy found at 003-epoch :: acc@1=62.72, acc@5=96.03, error@1=37.28, error@5=3.97, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:53:56]*** start epoch=004/305 Time Left: [02:45:50], LR=[0.080000 ~ 0.080000], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=4, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:53:57] [epoch=004/305][000/196] #LR=[0.080000~0.080000] epoch=004, iter=0.00# Time 0.45 (0.45) Data 0.27 (0.27) Loss 4.998 (4.998)  Prec@1 67.97 (67.97) Prec@5 96.09 (96.09) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:54:11] [epoch=004/305][100/196] #LR=[0.090204~0.090204] epoch=004, iter=0.51# Time 0.13 (0.15) Data 0.00 (0.00) Loss 4.143 (4.279)  Prec@1 72.27 (70.62) Prec@5 98.05 (97.63) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:54:24] [epoch=004/305][195/196] #LR=[0.099898~0.099898] epoch=004, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 4.574 (4.145)  Prec@1 63.75 (71.52) Prec@5 98.75 (97.73) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=28.47, @5=2.27
+ **TRAIN** Prec@1 71.52 Prec@5 97.73 Error@1 28.48 Error@5 2.27 Loss:4.145
+***[2020-02-17 05:54:24]*** TRAIN [epoch=004/305] loss = 4.145386, accuracy-1 = 71.52, accuracy-5 = 97.73
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:54:24] [epoch=004/305][000/040] Time 0.37 (0.37) Data 0.24 (0.24) Loss 9.533 (9.533)  Prec@1 48.05 (48.05) Prec@5 91.41 (91.41) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:54:28] [epoch=004/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 10.008 (9.452)  Prec@1 50.00 (48.69) Prec@5 81.25 (90.72) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=45.77, @5=9.08
+ **VALID** Prec@1 48.69 Prec@5 90.72 Error@1 51.31 Error@5 9.28 Loss:9.452
+***[2020-02-17 05:54:28]*** VALID [epoch=004/305] loss = 9.451771, accuracy@1 = 48.69, accuracy@5 = 90.72 | Best-Valid-Acc@1=62.72, Error@1=37.28
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:54:28]*** start epoch=005/305 Time Left: [02:43:46], LR=[0.100000 ~ 0.100000], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=5, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:54:28] [epoch=005/305][000/196] #LR=[0.100000~0.100000] epoch=005, iter=0.00# Time 0.44 (0.44) Data 0.27 (0.27) Loss 5.079 (5.079)  Prec@1 66.80 (66.80) Prec@5 96.09 (96.09) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:54:42] [epoch=005/305][100/196] #LR=[0.100000~0.100000] epoch=005, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 3.558 (3.811)  Prec@1 74.61 (73.56) Prec@5 98.05 (98.10) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:54:55] [epoch=005/305][195/196] #LR=[0.100000~0.100000] epoch=005, iter=0.99# Time 0.19 (0.14) Data 0.00 (0.00) Loss 4.394 (3.729)  Prec@1 73.75 (74.25) Prec@5 95.00 (98.13) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=25.74, @5=1.87
+ **TRAIN** Prec@1 74.25 Prec@5 98.13 Error@1 25.75 Error@5 1.87 Loss:3.729
+***[2020-02-17 05:54:55]*** TRAIN [epoch=005/305] loss = 3.729280, accuracy-1 = 74.25, accuracy-5 = 98.13
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:54:55] [epoch=005/305][000/040] Time 0.37 (0.37) Data 0.24 (0.24) Loss 5.234 (5.234)  Prec@1 66.80 (66.80) Prec@5 96.09 (96.09) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:54:58] [epoch=005/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 5.777 (5.596)  Prec@1 75.00 (64.22) Prec@5 93.75 (96.42) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=30.24, @5=3.38
+ **VALID** Prec@1 64.22 Prec@5 96.42 Error@1 35.78 Error@5 3.58 Loss:5.596
+***[2020-02-17 05:54:59]*** VALID [epoch=005/305] loss = 5.596225, accuracy@1 = 64.22, accuracy@5 = 96.42 | Best-Valid-Acc@1=62.72, Error@1=37.28
+Currently, the best validation accuracy found at 005-epoch :: acc@1=64.22, acc@5=96.42, error@1=35.78, error@5=3.58, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:54:59]*** start epoch=006/305 Time Left: [02:41:37], LR=[0.099997 ~ 0.099997], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=6, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:54:59] [epoch=006/305][000/196] #LR=[0.099997~0.099997] epoch=006, iter=0.00# Time 0.46 (0.46) Data 0.27 (0.27) Loss 3.345 (3.345)  Prec@1 75.39 (75.39) Prec@5 98.83 (98.83) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:55:13] [epoch=006/305][100/196] #LR=[0.099997~0.099997] epoch=006, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 3.631 (3.423)  Prec@1 75.39 (76.48) Prec@5 97.27 (98.38) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:55:25] [epoch=006/305][195/196] #LR=[0.099997~0.099997] epoch=006, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 3.155 (3.378)  Prec@1 78.75 (76.83) Prec@5 100.00 (98.46) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=23.16, @5=1.54
+ **TRAIN** Prec@1 76.83 Prec@5 98.46 Error@1 23.17 Error@5 1.54 Loss:3.378
+***[2020-02-17 05:55:26]*** TRAIN [epoch=006/305] loss = 3.378496, accuracy-1 = 76.83, accuracy-5 = 98.46
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:55:26] [epoch=006/305][000/040] Time 0.38 (0.38) Data 0.27 (0.27) Loss 5.581 (5.581)  Prec@1 68.36 (68.36) Prec@5 97.66 (97.66) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:55:29] [epoch=006/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 5.350 (5.441)  Prec@1 68.75 (65.44) Prec@5 93.75 (96.79) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=29.02, @5=3.01
+ **VALID** Prec@1 65.44 Prec@5 96.79 Error@1 34.56 Error@5 3.21 Loss:5.441
+***[2020-02-17 05:55:30]*** VALID [epoch=006/305] loss = 5.440609, accuracy@1 = 65.44, accuracy@5 = 96.79 | Best-Valid-Acc@1=64.22, Error@1=35.78
+Currently, the best validation accuracy found at 006-epoch :: acc@1=65.44, acc@5=96.79, error@1=34.56, error@5=3.21, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:55:30]*** start epoch=007/305 Time Left: [02:40:03], LR=[0.099989 ~ 0.099989], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=7, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:55:30] [epoch=007/305][000/196] #LR=[0.099989~0.099989] epoch=007, iter=0.00# Time 0.44 (0.44) Data 0.26 (0.26) Loss 3.508 (3.508)  Prec@1 74.22 (74.22) Prec@5 98.83 (98.83) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:55:44] [epoch=007/305][100/196] #LR=[0.099989~0.099989] epoch=007, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 3.239 (3.217)  Prec@1 78.91 (78.09) Prec@5 98.44 (98.54) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:55:57] [epoch=007/305][195/196] #LR=[0.099989~0.099989] epoch=007, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.994 (3.185)  Prec@1 80.00 (78.20) Prec@5 98.75 (98.56) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=21.80, @5=1.44
+ **TRAIN** Prec@1 78.20 Prec@5 98.56 Error@1 21.80 Error@5 1.44 Loss:3.185
+***[2020-02-17 05:55:57]*** TRAIN [epoch=007/305] loss = 3.184953, accuracy-1 = 78.20, accuracy-5 = 98.56
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:55:57] [epoch=007/305][000/040] Time 0.37 (0.37) Data 0.25 (0.25) Loss 5.649 (5.649)  Prec@1 64.45 (64.45) Prec@5 93.36 (93.36) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:56:01] [epoch=007/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 8.042 (5.451)  Prec@1 56.25 (65.20) Prec@5 93.75 (96.12) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=29.26, @5=3.68
+ **VALID** Prec@1 65.20 Prec@5 96.12 Error@1 34.80 Error@5 3.88 Loss:5.451
+***[2020-02-17 05:56:01]*** VALID [epoch=007/305] loss = 5.451114, accuracy@1 = 65.20, accuracy@5 = 96.12 | Best-Valid-Acc@1=65.44, Error@1=34.56
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:56:01]*** start epoch=008/305 Time Left: [02:39:05], LR=[0.099975 ~ 0.099975], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=8, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:56:02] [epoch=008/305][000/196] #LR=[0.099975~0.099975] epoch=008, iter=0.00# Time 0.47 (0.47) Data 0.27 (0.27) Loss 3.190 (3.190)  Prec@1 80.08 (80.08) Prec@5 98.44 (98.44) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:56:15] [epoch=008/305][100/196] #LR=[0.099975~0.099975] epoch=008, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.511 (3.013)  Prec@1 81.64 (79.25) Prec@5 100.00 (98.72) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:56:28] [epoch=008/305][195/196] #LR=[0.099975~0.099975] epoch=008, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 3.286 (3.009)  Prec@1 78.75 (79.35) Prec@5 97.50 (98.66) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=20.65, @5=1.34
+ **TRAIN** Prec@1 79.35 Prec@5 98.66 Error@1 20.65 Error@5 1.34 Loss:3.009
+***[2020-02-17 05:56:28]*** TRAIN [epoch=008/305] loss = 3.009022, accuracy-1 = 79.35, accuracy-5 = 98.66
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:56:29] [epoch=008/305][000/040] Time 0.38 (0.38) Data 0.25 (0.25) Loss 7.518 (7.518)  Prec@1 58.98 (58.98) Prec@5 87.89 (87.89) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:56:32] [epoch=008/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 5.591 (8.014)  Prec@1 75.00 (57.83) Prec@5 87.50 (89.60) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=36.63, @5=10.20
+ **VALID** Prec@1 57.83 Prec@5 89.60 Error@1 42.17 Error@5 10.40 Loss:8.014
+***[2020-02-17 05:56:32]*** VALID [epoch=008/305] loss = 8.013704, accuracy@1 = 57.83, accuracy@5 = 89.60 | Best-Valid-Acc@1=65.44, Error@1=34.56
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:56:32]*** start epoch=009/305 Time Left: [02:38:03], LR=[0.099956 ~ 0.099956], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=9, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:56:33] [epoch=009/305][000/196] #LR=[0.099956~0.099956] epoch=009, iter=0.00# Time 0.45 (0.45) Data 0.27 (0.27) Loss 3.006 (3.006)  Prec@1 76.95 (76.95) Prec@5 98.83 (98.83) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:56:46] [epoch=009/305][100/196] #LR=[0.099956~0.099956] epoch=009, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.877 (2.857)  Prec@1 79.69 (80.55) Prec@5 96.48 (98.84) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:56:59] [epoch=009/305][195/196] #LR=[0.099956~0.099956] epoch=009, iter=0.99# Time 0.12 (0.14) Data 0.00 (0.00) Loss 3.590 (2.850)  Prec@1 72.50 (80.56) Prec@5 96.25 (98.89) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=19.43, @5=1.11
+ **TRAIN** Prec@1 80.56 Prec@5 98.89 Error@1 19.44 Error@5 1.11 Loss:2.850
+***[2020-02-17 05:56:59]*** TRAIN [epoch=009/305] loss = 2.849607, accuracy-1 = 80.56, accuracy-5 = 98.89
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:57:00] [epoch=009/305][000/040] Time 0.38 (0.38) Data 0.25 (0.25) Loss 4.276 (4.276)  Prec@1 72.66 (72.66) Prec@5 95.70 (95.70) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:57:03] [epoch=009/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 5.774 (4.036)  Prec@1 75.00 (73.20) Prec@5 93.75 (97.21) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=21.26, @5=2.59
+ **VALID** Prec@1 73.20 Prec@5 97.21 Error@1 26.80 Error@5 2.79 Loss:4.036
+***[2020-02-17 05:57:03]*** VALID [epoch=009/305] loss = 4.035973, accuracy@1 = 73.20, accuracy@5 = 97.21 | Best-Valid-Acc@1=65.44, Error@1=34.56
+Currently, the best validation accuracy found at 009-epoch :: acc@1=73.20, acc@5=97.21, error@1=26.80, error@5=2.79, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:57:03]*** start epoch=010/305 Time Left: [02:36:59], LR=[0.099931 ~ 0.099931], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=10, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:57:04] [epoch=010/305][000/196] #LR=[0.099931~0.099931] epoch=010, iter=0.00# Time 0.44 (0.44) Data 0.27 (0.27) Loss 2.874 (2.874)  Prec@1 81.25 (81.25) Prec@5 99.61 (99.61) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:57:18] [epoch=010/305][100/196] #LR=[0.099931~0.099931] epoch=010, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.942 (2.785)  Prec@1 78.12 (81.19) Prec@5 100.00 (98.79) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:57:31] [epoch=010/305][195/196] #LR=[0.099931~0.099931] epoch=010, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 3.255 (2.767)  Prec@1 73.75 (81.22) Prec@5 97.50 (98.76) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=18.78, @5=1.24
+ **TRAIN** Prec@1 81.22 Prec@5 98.76 Error@1 18.78 Error@5 1.24 Loss:2.767
+***[2020-02-17 05:57:31]*** TRAIN [epoch=010/305] loss = 2.766892, accuracy-1 = 81.22, accuracy-5 = 98.76
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:57:31] [epoch=010/305][000/040] Time 0.39 (0.39) Data 0.25 (0.25) Loss 4.272 (4.272)  Prec@1 77.34 (77.34) Prec@5 96.48 (96.48) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:57:35] [epoch=010/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 4.002 (4.267)  Prec@1 81.25 (73.02) Prec@5 93.75 (96.76) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=21.44, @5=3.04
+ **VALID** Prec@1 73.02 Prec@5 96.76 Error@1 26.98 Error@5 3.24 Loss:4.267
+***[2020-02-17 05:57:35]*** VALID [epoch=010/305] loss = 4.267240, accuracy@1 = 73.02, accuracy@5 = 96.76 | Best-Valid-Acc@1=73.20, Error@1=26.80
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:57:35]*** start epoch=011/305 Time Left: [02:36:17], LR=[0.099901 ~ 0.099901], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=11, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:57:35] [epoch=011/305][000/196] #LR=[0.099901~0.099901] epoch=011, iter=0.00# Time 0.49 (0.49) Data 0.27 (0.27) Loss 2.806 (2.806)  Prec@1 82.81 (82.81) Prec@5 99.61 (99.61) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:57:49] [epoch=011/305][100/196] #LR=[0.099901~0.099901] epoch=011, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.757 (2.727)  Prec@1 80.47 (81.59) Prec@5 98.83 (98.96) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:58:02] [epoch=011/305][195/196] #LR=[0.099901~0.099901] epoch=011, iter=0.99# Time 0.15 (0.14) Data 0.00 (0.00) Loss 2.141 (2.718)  Prec@1 87.50 (81.57) Prec@5 100.00 (98.93) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=18.43, @5=1.07
+ **TRAIN** Prec@1 81.57 Prec@5 98.93 Error@1 18.43 Error@5 1.07 Loss:2.718
+***[2020-02-17 05:58:02]*** TRAIN [epoch=011/305] loss = 2.717681, accuracy-1 = 81.57, accuracy-5 = 98.93
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:58:03] [epoch=011/305][000/040] Time 0.38 (0.38) Data 0.25 (0.25) Loss 4.455 (4.455)  Prec@1 74.22 (74.22) Prec@5 94.92 (94.92) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:58:06] [epoch=011/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 4.191 (4.591)  Prec@1 81.25 (72.04) Prec@5 93.75 (95.85) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=22.42, @5=3.95
+ **VALID** Prec@1 72.04 Prec@5 95.85 Error@1 27.96 Error@5 4.15 Loss:4.591
+***[2020-02-17 05:58:06]*** VALID [epoch=011/305] loss = 4.590961, accuracy@1 = 72.04, accuracy@5 = 95.85 | Best-Valid-Acc@1=73.20, Error@1=26.80
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:58:06]*** start epoch=012/305 Time Left: [02:35:33], LR=[0.099866 ~ 0.099866], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=12, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:58:07] [epoch=012/305][000/196] #LR=[0.099866~0.099866] epoch=012, iter=0.00# Time 0.45 (0.45) Data 0.27 (0.27) Loss 2.733 (2.733)  Prec@1 83.20 (83.20) Prec@5 98.05 (98.05) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:58:20] [epoch=012/305][100/196] #LR=[0.099866~0.099866] epoch=012, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.720 (2.630)  Prec@1 83.59 (82.25) Prec@5 98.44 (98.93) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:58:33] [epoch=012/305][195/196] #LR=[0.099866~0.099866] epoch=012, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.917 (2.632)  Prec@1 82.50 (82.17) Prec@5 98.75 (98.99) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=17.83, @5=1.01
+ **TRAIN** Prec@1 82.17 Prec@5 98.99 Error@1 17.83 Error@5 1.01 Loss:2.632
+***[2020-02-17 05:58:33]*** TRAIN [epoch=012/305] loss = 2.632305, accuracy-1 = 82.17, accuracy-5 = 98.99
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:58:34] [epoch=012/305][000/040] Time 0.37 (0.37) Data 0.25 (0.25) Loss 5.947 (5.947)  Prec@1 64.06 (64.06) Prec@5 94.14 (94.14) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:58:38] [epoch=012/305][039/040] Time 0.10 (0.10) Data 0.00 (0.01) Loss 3.026 (6.265)  Prec@1 81.25 (62.72) Prec@5 93.75 (93.93) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=31.74, @5=5.87
+ **VALID** Prec@1 62.72 Prec@5 93.93 Error@1 37.28 Error@5 6.07 Loss:6.265
+***[2020-02-17 05:58:38]*** VALID [epoch=012/305] loss = 6.264876, accuracy@1 = 62.72, accuracy@5 = 93.93 | Best-Valid-Acc@1=73.20, Error@1=26.80
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:58:38]*** start epoch=013/305 Time Left: [02:34:52], LR=[0.099825 ~ 0.099825], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=13, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:58:38] [epoch=013/305][000/196] #LR=[0.099825~0.099825] epoch=013, iter=0.00# Time 0.44 (0.44) Data 0.27 (0.27) Loss 2.805 (2.805)  Prec@1 78.91 (78.91) Prec@5 98.44 (98.44) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:58:52] [epoch=013/305][100/196] #LR=[0.099825~0.099825] epoch=013, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.387 (2.579)  Prec@1 83.20 (82.46) Prec@5 99.22 (99.02) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:59:04] [epoch=013/305][195/196] #LR=[0.099825~0.099825] epoch=013, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 3.070 (2.604)  Prec@1 82.50 (82.27) Prec@5 100.00 (99.01) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=17.73, @5=0.99
+ **TRAIN** Prec@1 82.27 Prec@5 99.01 Error@1 17.73 Error@5 0.99 Loss:2.604
+***[2020-02-17 05:59:04]*** TRAIN [epoch=013/305] loss = 2.603954, accuracy-1 = 82.27, accuracy-5 = 99.01
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:59:05] [epoch=013/305][000/040] Time 0.37 (0.37) Data 0.25 (0.25) Loss 4.205 (4.205)  Prec@1 72.27 (72.27) Prec@5 97.27 (97.27) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:59:08] [epoch=013/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 3.140 (4.143)  Prec@1 93.75 (72.24) Prec@5 93.75 (98.00) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=22.22, @5=1.80
+ **VALID** Prec@1 72.24 Prec@5 98.00 Error@1 27.76 Error@5 2.00 Loss:4.143
+***[2020-02-17 05:59:08]*** VALID [epoch=013/305] loss = 4.143429, accuracy@1 = 72.24, accuracy@5 = 98.00 | Best-Valid-Acc@1=73.20, Error@1=26.80
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:59:09]*** start epoch=014/305 Time Left: [02:34:00], LR=[0.099778 ~ 0.099778], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=14, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:59:09] [epoch=014/305][000/196] #LR=[0.099778~0.099778] epoch=014, iter=0.00# Time 0.45 (0.45) Data 0.28 (0.28) Loss 2.379 (2.379)  Prec@1 80.08 (80.08) Prec@5 99.22 (99.22) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:59:23] [epoch=014/305][100/196] #LR=[0.099778~0.099778] epoch=014, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.478 (2.539)  Prec@1 83.59 (82.71) Prec@5 99.22 (99.02) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:59:35] [epoch=014/305][195/196] #LR=[0.099778~0.099778] epoch=014, iter=0.99# Time 0.12 (0.13) Data 0.00 (0.00) Loss 2.353 (2.515)  Prec@1 87.50 (82.83) Prec@5 98.75 (99.07) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=17.16, @5=0.93
+ **TRAIN** Prec@1 82.83 Prec@5 99.07 Error@1 17.17 Error@5 0.93 Loss:2.515
+***[2020-02-17 05:59:35]*** TRAIN [epoch=014/305] loss = 2.515116, accuracy-1 = 82.83, accuracy-5 = 99.07
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 05:59:35] [epoch=014/305][000/040] Time 0.36 (0.36) Data 0.25 (0.25) Loss 4.417 (4.417)  Prec@1 72.66 (72.66) Prec@5 96.48 (96.48) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 05:59:39] [epoch=014/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 5.172 (4.334)  Prec@1 81.25 (71.58) Prec@5 87.50 (96.30) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=22.88, @5=3.50
+ **VALID** Prec@1 71.58 Prec@5 96.30 Error@1 28.42 Error@5 3.70 Loss:4.334
+***[2020-02-17 05:59:39]*** VALID [epoch=014/305] loss = 4.333650, accuracy@1 = 71.58, accuracy@5 = 96.30 | Best-Valid-Acc@1=73.20, Error@1=26.80
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 05:59:39]*** start epoch=015/305 Time Left: [02:33:00], LR=[0.099726 ~ 0.099726], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=15, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 05:59:39] [epoch=015/305][000/196] #LR=[0.099726~0.099726] epoch=015, iter=0.00# Time 0.44 (0.44) Data 0.26 (0.26) Loss 2.585 (2.585)  Prec@1 82.81 (82.81) Prec@5 99.61 (99.61) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 05:59:53] [epoch=015/305][100/196] #LR=[0.099726~0.099726] epoch=015, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 1.762 (2.440)  Prec@1 87.11 (83.38) Prec@5 100.00 (99.09) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:00:05] [epoch=015/305][195/196] #LR=[0.099726~0.099726] epoch=015, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 3.118 (2.456)  Prec@1 76.25 (83.24) Prec@5 98.75 (99.03) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=16.75, @5=0.97
+ **TRAIN** Prec@1 83.24 Prec@5 99.03 Error@1 16.76 Error@5 0.97 Loss:2.456
+***[2020-02-17 06:00:05]*** TRAIN [epoch=015/305] loss = 2.456002, accuracy-1 = 83.24, accuracy-5 = 99.03
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:00:06] [epoch=015/305][000/040] Time 0.36 (0.36) Data 0.24 (0.24) Loss 3.771 (3.771)  Prec@1 74.61 (74.61) Prec@5 98.05 (98.05) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:00:09] [epoch=015/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 2.845 (3.641)  Prec@1 75.00 (75.35) Prec@5 100.00 (98.57) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=19.11, @5=1.23
+ **VALID** Prec@1 75.35 Prec@5 98.57 Error@1 24.65 Error@5 1.43 Loss:3.641
+***[2020-02-17 06:00:09]*** VALID [epoch=015/305] loss = 3.640705, accuracy@1 = 75.35, accuracy@5 = 98.57 | Best-Valid-Acc@1=73.20, Error@1=26.80
+Currently, the best validation accuracy found at 015-epoch :: acc@1=75.35, acc@5=98.57, error@1=24.65, error@5=1.43, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:00:09]*** start epoch=016/305 Time Left: [02:32:09], LR=[0.099669 ~ 0.099669], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=16, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:00:10] [epoch=016/305][000/196] #LR=[0.099669~0.099669] epoch=016, iter=0.00# Time 0.46 (0.46) Data 0.27 (0.27) Loss 3.118 (3.118)  Prec@1 77.73 (77.73) Prec@5 98.83 (98.83) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:00:23] [epoch=016/305][100/196] #LR=[0.099669~0.099669] epoch=016, iter=0.51# Time 0.19 (0.14) Data 0.00 (0.00) Loss 2.154 (2.420)  Prec@1 86.72 (83.47) Prec@5 99.22 (99.13) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:00:36] [epoch=016/305][195/196] #LR=[0.099669~0.099669] epoch=016, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 1.923 (2.419)  Prec@1 83.75 (83.42) Prec@5 100.00 (99.06) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=16.58, @5=0.94
+ **TRAIN** Prec@1 83.42 Prec@5 99.06 Error@1 16.58 Error@5 0.94 Loss:2.419
+***[2020-02-17 06:00:36]*** TRAIN [epoch=016/305] loss = 2.419115, accuracy-1 = 83.42, accuracy-5 = 99.06
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:00:37] [epoch=016/305][000/040] Time 0.46 (0.46) Data 0.25 (0.25) Loss 2.979 (2.979)  Prec@1 80.08 (80.08) Prec@5 98.44 (98.44) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:00:40] [epoch=016/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 4.036 (3.205)  Prec@1 87.50 (77.38) Prec@5 100.00 (98.31) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=17.08, @5=1.49
+ **VALID** Prec@1 77.38 Prec@5 98.31 Error@1 22.62 Error@5 1.69 Loss:3.205
+***[2020-02-17 06:00:40]*** VALID [epoch=016/305] loss = 3.204738, accuracy@1 = 77.38, accuracy@5 = 98.31 | Best-Valid-Acc@1=75.35, Error@1=24.65
+Currently, the best validation accuracy found at 016-epoch :: acc@1=77.38, acc@5=98.31, error@1=22.62, error@5=1.69, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:00:40]*** start epoch=017/305 Time Left: [02:31:25], LR=[0.099606 ~ 0.099606], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=17, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:00:41] [epoch=017/305][000/196] #LR=[0.099606~0.099606] epoch=017, iter=0.00# Time 0.43 (0.43) Data 0.28 (0.28) Loss 2.185 (2.185)  Prec@1 83.20 (83.20) Prec@5 99.61 (99.61) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:00:53] [epoch=017/305][100/196] #LR=[0.099606~0.099606] epoch=017, iter=0.51# Time 0.12 (0.13) Data 0.00 (0.00) Loss 2.682 (2.352)  Prec@1 80.08 (83.95) Prec@5 99.22 (99.19) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:01:06] [epoch=017/305][195/196] #LR=[0.099606~0.099606] epoch=017, iter=0.99# Time 0.13 (0.13) Data 0.00 (0.00) Loss 2.245 (2.374)  Prec@1 85.00 (83.79) Prec@5 100.00 (99.16) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=16.21, @5=0.84
+ **TRAIN** Prec@1 83.79 Prec@5 99.16 Error@1 16.21 Error@5 0.84 Loss:2.374
+***[2020-02-17 06:01:06]*** TRAIN [epoch=017/305] loss = 2.374228, accuracy-1 = 83.79, accuracy-5 = 99.16
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:01:07] [epoch=017/305][000/040] Time 0.38 (0.38) Data 0.25 (0.25) Loss 3.743 (3.743)  Prec@1 78.12 (78.12) Prec@5 96.88 (96.88) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:01:10] [epoch=017/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 5.690 (3.431)  Prec@1 68.75 (76.66) Prec@5 100.00 (97.94) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=17.80, @5=1.86
+ **VALID** Prec@1 76.66 Prec@5 97.94 Error@1 23.34 Error@5 2.06 Loss:3.431
+***[2020-02-17 06:01:10]*** VALID [epoch=017/305] loss = 3.430816, accuracy@1 = 76.66, accuracy@5 = 97.94 | Best-Valid-Acc@1=77.38, Error@1=22.62
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:01:10]*** start epoch=018/305 Time Left: [02:30:27], LR=[0.099537 ~ 0.099537], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=18, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:01:11] [epoch=018/305][000/196] #LR=[0.099537~0.099537] epoch=018, iter=0.00# Time 0.45 (0.45) Data 0.27 (0.27) Loss 2.609 (2.609)  Prec@1 82.42 (82.42) Prec@5 99.22 (99.22) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:01:23] [epoch=018/305][100/196] #LR=[0.099537~0.099537] epoch=018, iter=0.51# Time 0.12 (0.13) Data 0.00 (0.00) Loss 2.333 (2.365)  Prec@1 83.20 (83.79) Prec@5 99.61 (99.11) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:01:35] [epoch=018/305][195/196] #LR=[0.099537~0.099537] epoch=018, iter=0.99# Time 0.13 (0.13) Data 0.00 (0.00) Loss 2.541 (2.343)  Prec@1 80.00 (84.09) Prec@5 100.00 (99.10) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=15.90, @5=0.90
+ **TRAIN** Prec@1 84.09 Prec@5 99.10 Error@1 15.91 Error@5 0.90 Loss:2.343
+***[2020-02-17 06:01:35]*** TRAIN [epoch=018/305] loss = 2.343258, accuracy-1 = 84.09, accuracy-5 = 99.10
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:01:36] [epoch=018/305][000/040] Time 0.37 (0.37) Data 0.24 (0.24) Loss 3.646 (3.646)  Prec@1 74.61 (74.61) Prec@5 98.05 (98.05) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:01:39] [epoch=018/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 5.304 (3.646)  Prec@1 68.75 (75.20) Prec@5 100.00 (98.32) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=19.26, @5=1.48
+ **VALID** Prec@1 75.20 Prec@5 98.32 Error@1 24.80 Error@5 1.68 Loss:3.646
+***[2020-02-17 06:01:39]*** VALID [epoch=018/305] loss = 3.645661, accuracy@1 = 75.20, accuracy@5 = 98.32 | Best-Valid-Acc@1=77.38, Error@1=22.62
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:01:39]*** start epoch=019/305 Time Left: [02:29:24], LR=[0.099464 ~ 0.099464], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=19, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:01:40] [epoch=019/305][000/196] #LR=[0.099464~0.099464] epoch=019, iter=0.00# Time 0.46 (0.46) Data 0.27 (0.27) Loss 2.883 (2.883)  Prec@1 80.47 (80.47) Prec@5 99.22 (99.22) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:01:54] [epoch=019/305][100/196] #LR=[0.099464~0.099464] epoch=019, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.445 (2.345)  Prec@1 81.64 (84.07) Prec@5 98.83 (99.10) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:02:06] [epoch=019/305][195/196] #LR=[0.099464~0.099464] epoch=019, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 3.716 (2.323)  Prec@1 75.00 (84.23) Prec@5 100.00 (99.12) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=15.77, @5=0.88
+ **TRAIN** Prec@1 84.23 Prec@5 99.12 Error@1 15.77 Error@5 0.88 Loss:2.323
+***[2020-02-17 06:02:07]*** TRAIN [epoch=019/305] loss = 2.322944, accuracy-1 = 84.23, accuracy-5 = 99.12
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:02:07] [epoch=019/305][000/040] Time 0.37 (0.37) Data 0.25 (0.25) Loss 4.003 (4.003)  Prec@1 74.61 (74.61) Prec@5 95.70 (95.70) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:02:10] [epoch=019/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 2.192 (3.944)  Prec@1 75.00 (74.34) Prec@5 93.75 (97.99) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=20.12, @5=1.81
+ **VALID** Prec@1 74.34 Prec@5 97.99 Error@1 25.66 Error@5 2.01 Loss:3.944
+***[2020-02-17 06:02:11]*** VALID [epoch=019/305] loss = 3.944302, accuracy@1 = 74.34, accuracy@5 = 97.99 | Best-Valid-Acc@1=77.38, Error@1=22.62
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:02:11]*** start epoch=020/305 Time Left: [02:28:49], LR=[0.099384 ~ 0.099384], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=20, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:02:11] [epoch=020/305][000/196] #LR=[0.099384~0.099384] epoch=020, iter=0.00# Time 0.65 (0.65) Data 0.39 (0.39) Loss 2.680 (2.680)  Prec@1 82.81 (82.81) Prec@5 98.05 (98.05) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:02:25] [epoch=020/305][100/196] #LR=[0.099384~0.099384] epoch=020, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.280 (2.296)  Prec@1 83.98 (84.31) Prec@5 99.61 (99.21) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:02:38] [epoch=020/305][195/196] #LR=[0.099384~0.099384] epoch=020, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.557 (2.306)  Prec@1 83.75 (84.27) Prec@5 98.75 (99.15) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=15.73, @5=0.85
+ **TRAIN** Prec@1 84.27 Prec@5 99.15 Error@1 15.73 Error@5 0.85 Loss:2.306
+***[2020-02-17 06:02:38]*** TRAIN [epoch=020/305] loss = 2.305934, accuracy-1 = 84.27, accuracy-5 = 99.15
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:02:38] [epoch=020/305][000/040] Time 0.37 (0.37) Data 0.24 (0.24) Loss 3.392 (3.392)  Prec@1 78.91 (78.91) Prec@5 97.27 (97.27) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:02:42] [epoch=020/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 2.229 (3.383)  Prec@1 87.50 (77.54) Prec@5 100.00 (97.78) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=16.92, @5=2.02
+ **VALID** Prec@1 77.54 Prec@5 97.78 Error@1 22.46 Error@5 2.22 Loss:3.383
+***[2020-02-17 06:02:42]*** VALID [epoch=020/305] loss = 3.382715, accuracy@1 = 77.54, accuracy@5 = 97.78 | Best-Valid-Acc@1=77.38, Error@1=22.62
+Currently, the best validation accuracy found at 020-epoch :: acc@1=77.54, acc@5=97.78, error@1=22.46, error@5=2.22, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:02:42]*** start epoch=021/305 Time Left: [02:28:14], LR=[0.099300 ~ 0.099300], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=21, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:02:42] [epoch=021/305][000/196] #LR=[0.099300~0.099300] epoch=021, iter=0.00# Time 0.58 (0.58) Data 0.28 (0.28) Loss 2.856 (2.856)  Prec@1 77.73 (77.73) Prec@5 98.83 (98.83) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:02:56] [epoch=021/305][100/196] #LR=[0.099300~0.099300] epoch=021, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.214 (2.261)  Prec@1 86.72 (84.60) Prec@5 98.05 (99.18) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:03:09] [epoch=021/305][195/196] #LR=[0.099300~0.099300] epoch=021, iter=0.99# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.785 (2.276)  Prec@1 76.25 (84.55) Prec@5 100.00 (99.16) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=15.45, @5=0.84
+ **TRAIN** Prec@1 84.55 Prec@5 99.16 Error@1 15.45 Error@5 0.84 Loss:2.276
+***[2020-02-17 06:03:09]*** TRAIN [epoch=021/305] loss = 2.275566, accuracy-1 = 84.55, accuracy-5 = 99.16
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:03:09] [epoch=021/305][000/040] Time 0.37 (0.37) Data 0.24 (0.24) Loss 6.640 (6.640)  Prec@1 58.98 (58.98) Prec@5 96.88 (96.88) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:03:13] [epoch=021/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 6.100 (7.425)  Prec@1 75.00 (59.26) Prec@5 93.75 (96.31) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=35.20, @5=3.49
+ **VALID** Prec@1 59.26 Prec@5 96.31 Error@1 40.74 Error@5 3.69 Loss:7.425
+***[2020-02-17 06:03:13]*** VALID [epoch=021/305] loss = 7.424815, accuracy@1 = 59.26, accuracy@5 = 96.31 | Best-Valid-Acc@1=77.54, Error@1=22.46
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:03:13]*** start epoch=022/305 Time Left: [02:27:43], LR=[0.099210 ~ 0.099210], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=22, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:03:13] [epoch=022/305][000/196] #LR=[0.099210~0.099210] epoch=022, iter=0.00# Time 0.45 (0.45) Data 0.27 (0.27) Loss 2.498 (2.498)  Prec@1 82.42 (82.42) Prec@5 98.44 (98.44) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:03:27] [epoch=022/305][100/196] #LR=[0.099210~0.099210] epoch=022, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.813 (2.181)  Prec@1 78.91 (85.06) Prec@5 98.83 (99.32) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:03:40] [epoch=022/305][195/196] #LR=[0.099210~0.099210] epoch=022, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 1.938 (2.227)  Prec@1 87.50 (84.73) Prec@5 98.75 (99.24) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=15.27, @5=0.76
+ **TRAIN** Prec@1 84.73 Prec@5 99.24 Error@1 15.27 Error@5 0.76 Loss:2.227
+***[2020-02-17 06:03:40]*** TRAIN [epoch=022/305] loss = 2.227080, accuracy-1 = 84.73, accuracy-5 = 99.24
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:03:40] [epoch=022/305][000/040] Time 0.39 (0.39) Data 0.25 (0.25) Loss 2.529 (2.529)  Prec@1 81.25 (81.25) Prec@5 97.66 (97.66) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:03:44] [epoch=022/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 4.597 (2.826)  Prec@1 62.50 (80.10) Prec@5 100.00 (98.70) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=14.36, @5=1.10
+ **VALID** Prec@1 80.10 Prec@5 98.70 Error@1 19.90 Error@5 1.30 Loss:2.826
+***[2020-02-17 06:03:44]*** VALID [epoch=022/305] loss = 2.826318, accuracy@1 = 80.10, accuracy@5 = 98.70 | Best-Valid-Acc@1=77.54, Error@1=22.46
+Currently, the best validation accuracy found at 022-epoch :: acc@1=80.10, acc@5=98.70, error@1=19.90, error@5=1.30, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:03:44]*** start epoch=023/305 Time Left: [02:27:08], LR=[0.099114 ~ 0.099114], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=23, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:03:44] [epoch=023/305][000/196] #LR=[0.099114~0.099114] epoch=023, iter=0.00# Time 0.44 (0.44) Data 0.26 (0.26) Loss 1.963 (1.963)  Prec@1 87.50 (87.50) Prec@5 99.22 (99.22) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:03:58] [epoch=023/305][100/196] #LR=[0.099114~0.099114] epoch=023, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.232 (2.195)  Prec@1 86.33 (84.98) Prec@5 99.22 (99.20) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:04:11] [epoch=023/305][195/196] #LR=[0.099114~0.099114] epoch=023, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.335 (2.212)  Prec@1 82.50 (84.93) Prec@5 100.00 (99.24) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=15.06, @5=0.76
+ **TRAIN** Prec@1 84.93 Prec@5 99.24 Error@1 15.07 Error@5 0.76 Loss:2.212
+***[2020-02-17 06:04:11]*** TRAIN [epoch=023/305] loss = 2.212410, accuracy-1 = 84.93, accuracy-5 = 99.24
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:04:11] [epoch=023/305][000/040] Time 0.39 (0.39) Data 0.26 (0.26) Loss 3.735 (3.735)  Prec@1 75.00 (75.00) Prec@5 96.88 (96.88) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:04:15] [epoch=023/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 3.854 (3.859)  Prec@1 75.00 (74.78) Prec@5 93.75 (97.44) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=19.68, @5=2.36
+ **VALID** Prec@1 74.78 Prec@5 97.44 Error@1 25.22 Error@5 2.56 Loss:3.859
+***[2020-02-17 06:04:15]*** VALID [epoch=023/305] loss = 3.858921, accuracy@1 = 74.78, accuracy@5 = 97.44 | Best-Valid-Acc@1=80.10, Error@1=19.90
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:04:15]*** start epoch=024/305 Time Left: [02:26:33], LR=[0.099014 ~ 0.099014], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=24, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:04:16] [epoch=024/305][000/196] #LR=[0.099014~0.099014] epoch=024, iter=0.00# Time 0.46 (0.46) Data 0.27 (0.27) Loss 2.366 (2.366)  Prec@1 82.81 (82.81) Prec@5 99.61 (99.61) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:04:29] [epoch=024/305][100/196] #LR=[0.099014~0.099014] epoch=024, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 1.708 (2.184)  Prec@1 91.02 (85.32) Prec@5 99.61 (99.27) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:04:41] [epoch=024/305][195/196] #LR=[0.099014~0.099014] epoch=024, iter=0.99# Time 0.12 (0.13) Data 0.00 (0.00) Loss 2.350 (2.210)  Prec@1 85.00 (84.94) Prec@5 100.00 (99.27) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=15.06, @5=0.73
+ **TRAIN** Prec@1 84.94 Prec@5 99.27 Error@1 15.06 Error@5 0.73 Loss:2.210
+***[2020-02-17 06:04:41]*** TRAIN [epoch=024/305] loss = 2.210041, accuracy-1 = 84.94, accuracy-5 = 99.27
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:04:42] [epoch=024/305][000/040] Time 0.39 (0.39) Data 0.27 (0.27) Loss 3.852 (3.852)  Prec@1 73.44 (73.44) Prec@5 97.66 (97.66) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:04:45] [epoch=024/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 4.584 (3.566)  Prec@1 81.25 (75.28) Prec@5 93.75 (97.58) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=19.18, @5=2.22
+ **VALID** Prec@1 75.28 Prec@5 97.58 Error@1 24.72 Error@5 2.42 Loss:3.566
+***[2020-02-17 06:04:45]*** VALID [epoch=024/305] loss = 3.566236, accuracy@1 = 75.28, accuracy@5 = 97.58 | Best-Valid-Acc@1=80.10, Error@1=19.90
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:04:45]*** start epoch=025/305 Time Left: [02:25:50], LR=[0.098907 ~ 0.098907], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=25, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:04:46] [epoch=025/305][000/196] #LR=[0.098907~0.098907] epoch=025, iter=0.00# Time 0.47 (0.47) Data 0.28 (0.28) Loss 2.446 (2.446)  Prec@1 82.81 (82.81) Prec@5 100.00 (100.00) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:04:59] [epoch=025/305][100/196] #LR=[0.098907~0.098907] epoch=025, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.094 (2.137)  Prec@1 85.16 (85.41) Prec@5 99.61 (99.29) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:05:12] [epoch=025/305][195/196] #LR=[0.098907~0.098907] epoch=025, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.601 (2.160)  Prec@1 78.75 (85.36) Prec@5 98.75 (99.29) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=14.64, @5=0.71
+ **TRAIN** Prec@1 85.36 Prec@5 99.29 Error@1 14.64 Error@5 0.71 Loss:2.160
+***[2020-02-17 06:05:12]*** TRAIN [epoch=025/305] loss = 2.159802, accuracy-1 = 85.36, accuracy-5 = 99.29
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:05:12] [epoch=025/305][000/040] Time 0.39 (0.39) Data 0.25 (0.25) Loss 3.126 (3.126)  Prec@1 76.17 (76.17) Prec@5 97.66 (97.66) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:05:16] [epoch=025/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 2.859 (3.514)  Prec@1 87.50 (76.16) Prec@5 100.00 (98.22) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=18.30, @5=1.58
+ **VALID** Prec@1 76.16 Prec@5 98.22 Error@1 23.84 Error@5 1.78 Loss:3.514
+***[2020-02-17 06:05:16]*** VALID [epoch=025/305] loss = 3.514307, accuracy@1 = 76.16, accuracy@5 = 98.22 | Best-Valid-Acc@1=80.10, Error@1=19.90
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:05:16]*** start epoch=026/305 Time Left: [02:25:14], LR=[0.098796 ~ 0.098796], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=26, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:05:16] [epoch=026/305][000/196] #LR=[0.098796~0.098796] epoch=026, iter=0.00# Time 0.47 (0.47) Data 0.28 (0.28) Loss 2.691 (2.691)  Prec@1 82.42 (82.42) Prec@5 99.61 (99.61) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:05:30] [epoch=026/305][100/196] #LR=[0.098796~0.098796] epoch=026, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.453 (2.176)  Prec@1 83.59 (85.25) Prec@5 99.61 (99.26) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:05:43] [epoch=026/305][195/196] #LR=[0.098796~0.098796] epoch=026, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.050 (2.170)  Prec@1 86.25 (85.34) Prec@5 100.00 (99.26) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=14.65, @5=0.74
+ **TRAIN** Prec@1 85.34 Prec@5 99.26 Error@1 14.66 Error@5 0.74 Loss:2.170
+***[2020-02-17 06:05:43]*** TRAIN [epoch=026/305] loss = 2.170052, accuracy-1 = 85.34, accuracy-5 = 99.26
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:05:43] [epoch=026/305][000/040] Time 0.37 (0.37) Data 0.25 (0.25) Loss 4.967 (4.967)  Prec@1 71.88 (71.88) Prec@5 96.09 (96.09) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:05:47] [epoch=026/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 7.144 (4.335)  Prec@1 50.00 (73.17) Prec@5 93.75 (96.85) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=21.29, @5=2.95
+ **VALID** Prec@1 73.17 Prec@5 96.85 Error@1 26.83 Error@5 3.15 Loss:4.335
+***[2020-02-17 06:05:47]*** VALID [epoch=026/305] loss = 4.334857, accuracy@1 = 73.17, accuracy@5 = 96.85 | Best-Valid-Acc@1=80.10, Error@1=19.90
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:05:47]*** start epoch=027/305 Time Left: [02:24:40], LR=[0.098679 ~ 0.098679], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=27, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:05:47] [epoch=027/305][000/196] #LR=[0.098679~0.098679] epoch=027, iter=0.00# Time 0.44 (0.44) Data 0.27 (0.27) Loss 1.959 (1.959)  Prec@1 88.28 (88.28) Prec@5 99.22 (99.22) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:06:02] [epoch=027/305][100/196] #LR=[0.098679~0.098679] epoch=027, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.024 (2.107)  Prec@1 86.33 (85.74) Prec@5 100.00 (99.30) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:06:15] [epoch=027/305][195/196] #LR=[0.098679~0.098679] epoch=027, iter=0.99# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.273 (2.138)  Prec@1 80.00 (85.56) Prec@5 100.00 (99.29) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=14.43, @5=0.71
+ **TRAIN** Prec@1 85.56 Prec@5 99.29 Error@1 14.44 Error@5 0.71 Loss:2.138
+***[2020-02-17 06:06:15]*** TRAIN [epoch=027/305] loss = 2.138465, accuracy-1 = 85.56, accuracy-5 = 99.29
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:06:15] [epoch=027/305][000/040] Time 0.37 (0.37) Data 0.26 (0.26) Loss 2.866 (2.866)  Prec@1 78.91 (78.91) Prec@5 99.22 (99.22) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:06:19] [epoch=027/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 4.877 (2.540)  Prec@1 68.75 (81.61) Prec@5 93.75 (98.86) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=12.85, @5=0.94
+ **VALID** Prec@1 81.61 Prec@5 98.86 Error@1 18.39 Error@5 1.14 Loss:2.540
+***[2020-02-17 06:06:19]*** VALID [epoch=027/305] loss = 2.539815, accuracy@1 = 81.61, accuracy@5 = 98.86 | Best-Valid-Acc@1=80.10, Error@1=19.90
+Currently, the best validation accuracy found at 027-epoch :: acc@1=81.61, acc@5=98.86, error@1=18.39, error@5=1.14, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:06:19]*** start epoch=028/305 Time Left: [02:24:14], LR=[0.098557 ~ 0.098557], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=28, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:06:19] [epoch=028/305][000/196] #LR=[0.098557~0.098557] epoch=028, iter=0.00# Time 0.42 (0.42) Data 0.27 (0.27) Loss 2.072 (2.072)  Prec@1 85.94 (85.94) Prec@5 98.44 (98.44) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:06:32] [epoch=028/305][100/196] #LR=[0.098557~0.098557] epoch=028, iter=0.51# Time 0.12 (0.14) Data 0.00 (0.00) Loss 1.780 (2.121)  Prec@1 88.28 (85.72) Prec@5 98.83 (99.35) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:06:45] [epoch=028/305][195/196] #LR=[0.098557~0.098557] epoch=028, iter=0.99# Time 0.14 (0.13) Data 0.00 (0.00) Loss 2.581 (2.132)  Prec@1 86.25 (85.65) Prec@5 98.75 (99.29) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=14.34, @5=0.71
+ **TRAIN** Prec@1 85.65 Prec@5 99.29 Error@1 14.35 Error@5 0.71 Loss:2.132
+***[2020-02-17 06:06:45]*** TRAIN [epoch=028/305] loss = 2.131700, accuracy-1 = 85.65, accuracy-5 = 99.29
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:06:46] [epoch=028/305][000/040] Time 0.37 (0.37) Data 0.24 (0.24) Loss 3.160 (3.160)  Prec@1 81.25 (81.25) Prec@5 97.66 (97.66) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:06:49] [epoch=028/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 3.077 (3.541)  Prec@1 75.00 (76.37) Prec@5 100.00 (98.17) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=18.09, @5=1.63
+ **VALID** Prec@1 76.37 Prec@5 98.17 Error@1 23.63 Error@5 1.83 Loss:3.541
+***[2020-02-17 06:06:49]*** VALID [epoch=028/305] loss = 3.541425, accuracy@1 = 76.37, accuracy@5 = 98.17 | Best-Valid-Acc@1=81.61, Error@1=18.39
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:06:49]*** start epoch=029/305 Time Left: [02:23:34], LR=[0.098429 ~ 0.098429], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=29, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:06:50] [epoch=029/305][000/196] #LR=[0.098429~0.098429] epoch=029, iter=0.00# Time 0.45 (0.45) Data 0.27 (0.27) Loss 1.992 (1.992)  Prec@1 86.72 (86.72) Prec@5 99.61 (99.61) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:07:03] [epoch=029/305][100/196] #LR=[0.098429~0.098429] epoch=029, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.277 (2.079)  Prec@1 83.20 (85.83) Prec@5 98.83 (99.23) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:07:16] [epoch=029/305][195/196] #LR=[0.098429~0.098429] epoch=029, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.070 (2.100)  Prec@1 85.00 (85.65) Prec@5 100.00 (99.26) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=14.34, @5=0.74
+ **TRAIN** Prec@1 85.65 Prec@5 99.26 Error@1 14.35 Error@5 0.74 Loss:2.100
+***[2020-02-17 06:07:16]*** TRAIN [epoch=029/305] loss = 2.100322, accuracy-1 = 85.65, accuracy-5 = 99.26
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:07:16] [epoch=029/305][000/040] Time 0.37 (0.37) Data 0.25 (0.25) Loss 3.879 (3.879)  Prec@1 76.56 (76.56) Prec@5 96.48 (96.48) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:07:20] [epoch=029/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 4.148 (3.848)  Prec@1 68.75 (74.62) Prec@5 100.00 (97.96) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=19.84, @5=1.84
+ **VALID** Prec@1 74.62 Prec@5 97.96 Error@1 25.38 Error@5 2.04 Loss:3.848
+***[2020-02-17 06:07:20]*** VALID [epoch=029/305] loss = 3.847665, accuracy@1 = 74.62, accuracy@5 = 97.96 | Best-Valid-Acc@1=81.61, Error@1=18.39
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:07:20]*** start epoch=030/305 Time Left: [02:22:59], LR=[0.098296 ~ 0.098296], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=30, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:07:20] [epoch=030/305][000/196] #LR=[0.098296~0.098296] epoch=030, iter=0.00# Time 0.47 (0.47) Data 0.27 (0.27) Loss 2.192 (2.192)  Prec@1 85.16 (85.16) Prec@5 100.00 (100.00) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:07:34] [epoch=030/305][100/196] #LR=[0.098296~0.098296] epoch=030, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 1.979 (2.072)  Prec@1 85.94 (85.93) Prec@5 99.61 (99.34) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:07:48] [epoch=030/305][195/196] #LR=[0.098296~0.098296] epoch=030, iter=0.99# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.031 (2.101)  Prec@1 85.00 (85.67) Prec@5 100.00 (99.30) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=14.32, @5=0.70
+ **TRAIN** Prec@1 85.67 Prec@5 99.30 Error@1 14.33 Error@5 0.70 Loss:2.101
+***[2020-02-17 06:07:48]*** TRAIN [epoch=030/305] loss = 2.101294, accuracy-1 = 85.67, accuracy-5 = 99.30
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:07:48] [epoch=030/305][000/040] Time 0.37 (0.37) Data 0.25 (0.25) Loss 4.581 (4.581)  Prec@1 68.36 (68.36) Prec@5 96.48 (96.48) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:07:52] [epoch=030/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 5.036 (4.688)  Prec@1 68.75 (69.36) Prec@5 93.75 (97.04) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=25.10, @5=2.76
+ **VALID** Prec@1 69.36 Prec@5 97.04 Error@1 30.64 Error@5 2.96 Loss:4.688
+***[2020-02-17 06:07:52]*** VALID [epoch=030/305] loss = 4.687576, accuracy@1 = 69.36, accuracy@5 = 97.04 | Best-Valid-Acc@1=81.61, Error@1=18.39
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:07:52]*** start epoch=031/305 Time Left: [02:22:36], LR=[0.098158 ~ 0.098158], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=31, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:07:52] [epoch=031/305][000/196] #LR=[0.098158~0.098158] epoch=031, iter=0.00# Time 0.47 (0.47) Data 0.27 (0.27) Loss 2.115 (2.115)  Prec@1 86.33 (86.33) Prec@5 98.83 (98.83) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:08:06] [epoch=031/305][100/196] #LR=[0.098158~0.098158] epoch=031, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 1.820 (2.068)  Prec@1 87.11 (86.07) Prec@5 99.61 (99.38) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:08:19] [epoch=031/305][195/196] #LR=[0.098158~0.098158] epoch=031, iter=0.99# Time 0.15 (0.14) Data 0.00 (0.00) Loss 2.481 (2.074)  Prec@1 83.75 (85.91) Prec@5 100.00 (99.34) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=14.09, @5=0.66
+ **TRAIN** Prec@1 85.91 Prec@5 99.34 Error@1 14.09 Error@5 0.66 Loss:2.074
+***[2020-02-17 06:08:19]*** TRAIN [epoch=031/305] loss = 2.074079, accuracy-1 = 85.91, accuracy-5 = 99.34
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:08:19] [epoch=031/305][000/040] Time 0.38 (0.38) Data 0.25 (0.25) Loss 4.233 (4.233)  Prec@1 73.05 (73.05) Prec@5 97.66 (97.66) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:08:23] [epoch=031/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 7.968 (4.031)  Prec@1 56.25 (74.70) Prec@5 100.00 (98.08) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=19.76, @5=1.72
+ **VALID** Prec@1 74.70 Prec@5 98.08 Error@1 25.30 Error@5 1.92 Loss:4.031
+***[2020-02-17 06:08:23]*** VALID [epoch=031/305] loss = 4.030701, accuracy@1 = 74.70, accuracy@5 = 98.08 | Best-Valid-Acc@1=81.61, Error@1=18.39
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:08:23]*** start epoch=032/305 Time Left: [02:22:04], LR=[0.098015 ~ 0.098015], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=32, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:08:24] [epoch=032/305][000/196] #LR=[0.098015~0.098015] epoch=032, iter=0.00# Time 0.46 (0.46) Data 0.27 (0.27) Loss 1.995 (1.995)  Prec@1 86.33 (86.33) Prec@5 100.00 (100.00) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:08:37] [epoch=032/305][100/196] #LR=[0.098015~0.098015] epoch=032, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.073 (2.051)  Prec@1 85.94 (86.21) Prec@5 99.22 (99.33) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:08:50] [epoch=032/305][195/196] #LR=[0.098015~0.098015] epoch=032, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 1.847 (2.067)  Prec@1 88.75 (86.08) Prec@5 100.00 (99.32) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=13.92, @5=0.68
+ **TRAIN** Prec@1 86.08 Prec@5 99.32 Error@1 13.92 Error@5 0.68 Loss:2.067
+***[2020-02-17 06:08:50]*** TRAIN [epoch=032/305] loss = 2.067483, accuracy-1 = 86.08, accuracy-5 = 99.32
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:08:51] [epoch=032/305][000/040] Time 0.38 (0.38) Data 0.25 (0.25) Loss 2.004 (2.004)  Prec@1 85.16 (85.16) Prec@5 100.00 (100.00) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:08:54] [epoch=032/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 3.516 (2.307)  Prec@1 75.00 (82.95) Prec@5 100.00 (99.05) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=11.51, @5=0.75
+ **VALID** Prec@1 82.95 Prec@5 99.05 Error@1 17.05 Error@5 0.95 Loss:2.307
+***[2020-02-17 06:08:54]*** VALID [epoch=032/305] loss = 2.306695, accuracy@1 = 82.95, accuracy@5 = 99.05 | Best-Valid-Acc@1=81.61, Error@1=18.39
+Currently, the best validation accuracy found at 032-epoch :: acc@1=82.95, acc@5=99.05, error@1=17.05, error@5=0.95, save into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth.
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth exist, delete is at first before saving
+copy the file from output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-best.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:08:54]*** start epoch=033/305 Time Left: [02:21:32], LR=[0.097866 ~ 0.097866], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=33, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:08:55] [epoch=033/305][000/196] #LR=[0.097866~0.097866] epoch=033, iter=0.00# Time 0.47 (0.47) Data 0.28 (0.28) Loss 2.423 (2.423)  Prec@1 82.42 (82.42) Prec@5 98.83 (98.83) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:09:08] [epoch=033/305][100/196] #LR=[0.097866~0.097866] epoch=033, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.176 (2.044)  Prec@1 84.77 (86.08) Prec@5 100.00 (99.35) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:09:21] [epoch=033/305][195/196] #LR=[0.097866~0.097866] epoch=033, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.311 (2.052)  Prec@1 85.00 (86.03) Prec@5 100.00 (99.32) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=13.97, @5=0.68
+ **TRAIN** Prec@1 86.03 Prec@5 99.32 Error@1 13.97 Error@5 0.68 Loss:2.052
+***[2020-02-17 06:09:21]*** TRAIN [epoch=033/305] loss = 2.052169, accuracy-1 = 86.03, accuracy-5 = 99.32
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:09:22] [epoch=033/305][000/040] Time 0.37 (0.37) Data 0.25 (0.25) Loss 2.846 (2.846)  Prec@1 80.47 (80.47) Prec@5 98.83 (98.83) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:09:26] [epoch=033/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 6.069 (3.166)  Prec@1 62.50 (79.04) Prec@5 100.00 (98.56) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=15.42, @5=1.24
+ **VALID** Prec@1 79.04 Prec@5 98.56 Error@1 20.96 Error@5 1.44 Loss:3.166
+***[2020-02-17 06:09:26]*** VALID [epoch=033/305] loss = 3.166098, accuracy@1 = 79.04, accuracy@5 = 98.56 | Best-Valid-Acc@1=82.95, Error@1=17.05
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:09:26]*** start epoch=034/305 Time Left: [02:21:02], LR=[0.097712 ~ 0.097712], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=34, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:09:26] [epoch=034/305][000/196] #LR=[0.097712~0.097712] epoch=034, iter=0.00# Time 0.47 (0.47) Data 0.30 (0.30) Loss 2.423 (2.423)  Prec@1 84.38 (84.38) Prec@5 98.83 (98.83) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:09:39] [epoch=034/305][100/196] #LR=[0.097712~0.097712] epoch=034, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.374 (2.037)  Prec@1 84.38 (86.15) Prec@5 99.22 (99.35) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:09:52] [epoch=034/305][195/196] #LR=[0.097712~0.097712] epoch=034, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.718 (2.062)  Prec@1 81.25 (85.85) Prec@5 98.75 (99.34) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=14.15, @5=0.66
+ **TRAIN** Prec@1 85.85 Prec@5 99.34 Error@1 14.15 Error@5 0.66 Loss:2.062
+***[2020-02-17 06:09:52]*** TRAIN [epoch=034/305] loss = 2.062011, accuracy-1 = 85.85, accuracy-5 = 99.34
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:09:53] [epoch=034/305][000/040] Time 0.38 (0.38) Data 0.25 (0.25) Loss 4.918 (4.918)  Prec@1 69.14 (69.14) Prec@5 97.66 (97.66) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:09:56] [epoch=034/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 3.500 (4.809)  Prec@1 81.25 (69.49) Prec@5 100.00 (98.09) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=24.97, @5=1.71
+ **VALID** Prec@1 69.49 Prec@5 98.09 Error@1 30.51 Error@5 1.91 Loss:4.809
+***[2020-02-17 06:09:56]*** VALID [epoch=034/305] loss = 4.808507, accuracy@1 = 69.49, accuracy@5 = 98.09 | Best-Valid-Acc@1=82.95, Error@1=17.05
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:09:56]*** start epoch=035/305 Time Left: [02:20:26], LR=[0.097553 ~ 0.097553], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=35, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:09:57] [epoch=035/305][000/196] #LR=[0.097553~0.097553] epoch=035, iter=0.00# Time 0.47 (0.47) Data 0.28 (0.28) Loss 1.681 (1.681)  Prec@1 89.45 (89.45) Prec@5 100.00 (100.00) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:10:11] [epoch=035/305][100/196] #LR=[0.097553~0.097553] epoch=035, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.207 (1.991)  Prec@1 85.94 (86.66) Prec@5 98.44 (99.38) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:10:23] [epoch=035/305][195/196] #LR=[0.097553~0.097553] epoch=035, iter=0.99# Time 0.14 (0.14) Data 0.00 (0.00) Loss 1.536 (2.020)  Prec@1 90.00 (86.40) Prec@5 98.75 (99.33) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=13.60, @5=0.67
+ **TRAIN** Prec@1 86.40 Prec@5 99.33 Error@1 13.60 Error@5 0.67 Loss:2.020
+***[2020-02-17 06:10:24]*** TRAIN [epoch=035/305] loss = 2.019842, accuracy-1 = 86.40, accuracy-5 = 99.33
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:10:24] [epoch=035/305][000/040] Time 0.40 (0.40) Data 0.27 (0.27) Loss 6.107 (6.107)  Prec@1 65.62 (65.62) Prec@5 92.58 (92.58) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:10:28] [epoch=035/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 6.352 (6.689)  Prec@1 62.50 (62.35) Prec@5 93.75 (93.09) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=32.11, @5=6.71
+ **VALID** Prec@1 62.35 Prec@5 93.09 Error@1 37.65 Error@5 6.91 Loss:6.689
+***[2020-02-17 06:10:28]*** VALID [epoch=035/305] loss = 6.689255, accuracy@1 = 62.35, accuracy@5 = 93.09 | Best-Valid-Acc@1=82.95, Error@1=17.05
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:10:28]*** start epoch=036/305 Time Left: [02:19:56], LR=[0.097388 ~ 0.097388], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=36, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:10:28] [epoch=036/305][000/196] #LR=[0.097388~0.097388] epoch=036, iter=0.00# Time 0.45 (0.45) Data 0.27 (0.27) Loss 2.063 (2.063)  Prec@1 85.94 (85.94) Prec@5 98.83 (98.83) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:10:42] [epoch=036/305][100/196] #LR=[0.097388~0.097388] epoch=036, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 1.894 (1.974)  Prec@1 85.55 (86.65) Prec@5 99.61 (99.42) Teacher : acc@1=99.99, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:10:54] [epoch=036/305][195/196] #LR=[0.097388~0.097388] epoch=036, iter=0.99# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.970 (2.031)  Prec@1 81.25 (86.18) Prec@5 100.00 (99.29) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=13.82, @5=0.71
+ **TRAIN** Prec@1 86.18 Prec@5 99.29 Error@1 13.82 Error@5 0.71 Loss:2.031
+***[2020-02-17 06:10:55]*** TRAIN [epoch=036/305] loss = 2.031420, accuracy-1 = 86.18, accuracy-5 = 99.29
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:10:55] [epoch=036/305][000/040] Time 0.37 (0.37) Data 0.25 (0.25) Loss 5.240 (5.240)  Prec@1 69.14 (69.14) Prec@5 94.92 (94.92) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:10:58] [epoch=036/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 6.604 (4.253)  Prec@1 62.50 (73.73) Prec@5 100.00 (97.07) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=20.73, @5=2.73
+ **VALID** Prec@1 73.73 Prec@5 97.07 Error@1 26.27 Error@5 2.93 Loss:4.253
+***[2020-02-17 06:10:59]*** VALID [epoch=036/305] loss = 4.252984, accuracy@1 = 73.73, accuracy@5 = 97.07 | Best-Valid-Acc@1=82.95, Error@1=17.05
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:10:59]*** start epoch=037/305 Time Left: [02:19:22], LR=[0.097219 ~ 0.097219], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=37, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:10:59] [epoch=037/305][000/196] #LR=[0.097219~0.097219] epoch=037, iter=0.00# Time 0.44 (0.44) Data 0.26 (0.26) Loss 2.973 (2.973)  Prec@1 81.64 (81.64) Prec@5 97.27 (97.27) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:11:13] [epoch=037/305][100/196] #LR=[0.097219~0.097219] epoch=037, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 1.851 (2.036)  Prec@1 86.72 (86.12) Prec@5 100.00 (99.32) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:11:26] [epoch=037/305][195/196] #LR=[0.097219~0.097219] epoch=037, iter=0.99# Time 0.14 (0.14) Data 0.00 (0.00) Loss 1.844 (2.019)  Prec@1 88.75 (86.36) Prec@5 100.00 (99.31) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=13.64, @5=0.69
+ **TRAIN** Prec@1 86.36 Prec@5 99.31 Error@1 13.64 Error@5 0.69 Loss:2.019
+***[2020-02-17 06:11:26]*** TRAIN [epoch=037/305] loss = 2.019276, accuracy-1 = 86.36, accuracy-5 = 99.31
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:11:26] [epoch=037/305][000/040] Time 0.36 (0.36) Data 0.25 (0.25) Loss 3.848 (3.848)  Prec@1 74.22 (74.22) Prec@5 98.44 (98.44) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:11:30] [epoch=037/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 4.009 (3.931)  Prec@1 68.75 (74.64) Prec@5 93.75 (97.78) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=19.82, @5=2.02
+ **VALID** Prec@1 74.64 Prec@5 97.78 Error@1 25.36 Error@5 2.22 Loss:3.931
+***[2020-02-17 06:11:30]*** VALID [epoch=037/305] loss = 3.930774, accuracy@1 = 74.64, accuracy@5 = 97.78 | Best-Valid-Acc@1=82.95, Error@1=17.05
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:11:30]*** start epoch=038/305 Time Left: [02:18:54], LR=[0.097044 ~ 0.097044], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=38, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:11:31] [epoch=038/305][000/196] #LR=[0.097044~0.097044] epoch=038, iter=0.00# Time 0.46 (0.46) Data 0.27 (0.27) Loss 2.149 (2.149)  Prec@1 87.50 (87.50) Prec@5 99.61 (99.61) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:11:45] [epoch=038/305][100/196] #LR=[0.097044~0.097044] epoch=038, iter=0.51# Time 0.15 (0.15) Data 0.00 (0.00) Loss 1.823 (1.982)  Prec@1 87.11 (86.71) Prec@5 99.22 (99.33) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:11:59] [epoch=038/305][195/196] #LR=[0.097044~0.097044] epoch=038, iter=0.99# Time 0.14 (0.15) Data 0.00 (0.00) Loss 2.308 (2.015)  Prec@1 82.50 (86.49) Prec@5 100.00 (99.30) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=13.51, @5=0.70
+ **TRAIN** Prec@1 86.49 Prec@5 99.30 Error@1 13.51 Error@5 0.70 Loss:2.015
+***[2020-02-17 06:11:59]*** TRAIN [epoch=038/305] loss = 2.014532, accuracy-1 = 86.49, accuracy-5 = 99.30
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:11:59] [epoch=038/305][000/040] Time 0.37 (0.37) Data 0.25 (0.25) Loss 2.619 (2.619)  Prec@1 82.42 (82.42) Prec@5 98.83 (98.83) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:12:03] [epoch=038/305][039/040] Time 0.08 (0.10) Data 0.00 (0.01) Loss 4.304 (2.812)  Prec@1 75.00 (81.08) Prec@5 100.00 (98.64) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=13.38, @5=1.16
+ **VALID** Prec@1 81.08 Prec@5 98.64 Error@1 18.92 Error@5 1.36 Loss:2.812
+***[2020-02-17 06:12:03]*** VALID [epoch=038/305] loss = 2.811665, accuracy@1 = 81.08, accuracy@5 = 98.64 | Best-Valid-Acc@1=82.95, Error@1=17.05
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:12:03]*** start epoch=039/305 Time Left: [02:18:34], LR=[0.096864 ~ 0.096864], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=39, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:12:04] [epoch=039/305][000/196] #LR=[0.096864~0.096864] epoch=039, iter=0.00# Time 0.47 (0.47) Data 0.28 (0.28) Loss 1.827 (1.827)  Prec@1 88.67 (88.67) Prec@5 100.00 (100.00) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:12:17] [epoch=039/305][100/196] #LR=[0.096864~0.096864] epoch=039, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 2.277 (2.041)  Prec@1 85.16 (86.11) Prec@5 98.05 (99.28) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:12:30] [epoch=039/305][195/196] #LR=[0.096864~0.096864] epoch=039, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.130 (2.012)  Prec@1 83.75 (86.37) Prec@5 100.00 (99.32) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=13.63, @5=0.68
+ **TRAIN** Prec@1 86.37 Prec@5 99.32 Error@1 13.63 Error@5 0.68 Loss:2.012
+***[2020-02-17 06:12:30]*** TRAIN [epoch=039/305] loss = 2.011910, accuracy-1 = 86.37, accuracy-5 = 99.32
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:12:31] [epoch=039/305][000/040] Time 0.36 (0.36) Data 0.25 (0.25) Loss 3.408 (3.408)  Prec@1 77.73 (77.73) Prec@5 97.27 (97.27) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:12:34] [epoch=039/305][039/040] Time 0.14 (0.10) Data 0.00 (0.01) Loss 4.034 (3.441)  Prec@1 81.25 (76.94) Prec@5 93.75 (97.08) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=17.52, @5=2.72
+ **VALID** Prec@1 76.94 Prec@5 97.08 Error@1 23.06 Error@5 2.92 Loss:3.441
+***[2020-02-17 06:12:34]*** VALID [epoch=039/305] loss = 3.440576, accuracy@1 = 76.94, accuracy@5 = 97.08 | Best-Valid-Acc@1=82.95, Error@1=17.05
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:12:34]*** start epoch=040/305 Time Left: [02:18:04], LR=[0.096679 ~ 0.096679], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=40, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:12:35] [epoch=040/305][000/196] #LR=[0.096679~0.096679] epoch=040, iter=0.00# Time 0.45 (0.45) Data 0.26 (0.26) Loss 1.871 (1.871)  Prec@1 87.11 (87.11) Prec@5 100.00 (100.00) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:12:48] [epoch=040/305][100/196] #LR=[0.096679~0.096679] epoch=040, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.151 (1.997)  Prec@1 83.59 (86.41) Prec@5 99.22 (99.39) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:13:01] [epoch=040/305][195/196] #LR=[0.096679~0.096679] epoch=040, iter=0.99# Time 0.13 (0.14) Data 0.00 (0.00) Loss 1.912 (1.994)  Prec@1 88.75 (86.36) Prec@5 100.00 (99.37) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=13.63, @5=0.63
+ **TRAIN** Prec@1 86.36 Prec@5 99.37 Error@1 13.64 Error@5 0.63 Loss:1.994
+***[2020-02-17 06:13:01]*** TRAIN [epoch=040/305] loss = 1.994335, accuracy-1 = 86.36, accuracy-5 = 99.37
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:13:02] [epoch=040/305][000/040] Time 0.39 (0.39) Data 0.26 (0.26) Loss 3.247 (3.247)  Prec@1 77.34 (77.34) Prec@5 100.00 (100.00) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:13:05] [epoch=040/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 1.840 (2.877)  Prec@1 87.50 (80.18) Prec@5 100.00 (98.53) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=14.28, @5=1.27
+ **VALID** Prec@1 80.18 Prec@5 98.53 Error@1 19.82 Error@5 1.47 Loss:2.877
+***[2020-02-17 06:13:05]*** VALID [epoch=040/305] loss = 2.876897, accuracy@1 = 80.18, accuracy@5 = 98.53 | Best-Valid-Acc@1=82.95, Error@1=17.05
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:13:05]*** start epoch=041/305 Time Left: [02:17:30], LR=[0.096489 ~ 0.096489], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=41, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:13:06] [epoch=041/305][000/196] #LR=[0.096489~0.096489] epoch=041, iter=0.00# Time 0.48 (0.48) Data 0.26 (0.26) Loss 2.055 (2.055)  Prec@1 85.94 (85.94) Prec@5 99.61 (99.61) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:13:19] [epoch=041/305][100/196] #LR=[0.096489~0.096489] epoch=041, iter=0.51# Time 0.13 (0.14) Data 0.00 (0.00) Loss 2.269 (1.992)  Prec@1 83.20 (86.42) Prec@5 99.61 (99.38) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:13:32] [epoch=041/305][195/196] #LR=[0.096489~0.096489] epoch=041, iter=0.99# Time 0.15 (0.14) Data 0.00 (0.00) Loss 2.215 (2.012)  Prec@1 88.75 (86.32) Prec@5 100.00 (99.33) Teacher : acc@1=100.00, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=13.68, @5=0.67
+ **TRAIN** Prec@1 86.32 Prec@5 99.33 Error@1 13.68 Error@5 0.67 Loss:2.012
+***[2020-02-17 06:13:32]*** TRAIN [epoch=041/305] loss = 2.011990, accuracy-1 = 86.32, accuracy-5 = 99.33
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:13:33] [epoch=041/305][000/040] Time 0.36 (0.36) Data 0.25 (0.25) Loss 2.895 (2.895)  Prec@1 79.30 (79.30) Prec@5 97.66 (97.66) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:13:36] [epoch=041/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 3.204 (2.991)  Prec@1 81.25 (79.20) Prec@5 93.75 (98.51) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=15.26, @5=1.29
+ **VALID** Prec@1 79.20 Prec@5 98.51 Error@1 20.80 Error@5 1.49 Loss:2.991
+***[2020-02-17 06:13:36]*** VALID [epoch=041/305] loss = 2.990543, accuracy@1 = 79.20, accuracy@5 = 98.51 | Best-Valid-Acc@1=82.95, Error@1=17.05
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:13:36]*** start epoch=042/305 Time Left: [02:16:58], LR=[0.096294 ~ 0.096294], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=42, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:13:37] [epoch=042/305][000/196] #LR=[0.096294~0.096294] epoch=042, iter=0.00# Time 0.45 (0.45) Data 0.27 (0.27) Loss 1.899 (1.899)  Prec@1 87.50 (87.50) Prec@5 99.61 (99.61) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:13:51] [epoch=042/305][100/196] #LR=[0.096294~0.096294] epoch=042, iter=0.51# Time 0.12 (0.14) Data 0.00 (0.00) Loss 1.636 (1.966)  Prec@1 88.67 (86.85) Prec@5 99.61 (99.38) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:14:04] [epoch=042/305][195/196] #LR=[0.096294~0.096294] epoch=042, iter=0.99# Time 0.12 (0.14) Data 0.00 (0.00) Loss 2.527 (1.963)  Prec@1 80.00 (86.81) Prec@5 98.75 (99.38) Teacher : acc@1=99.99, acc@5=100.00 Size=[80, 3, 32, 32]
+ **TRAIN** accuracy drop :: @1=13.19, @5=0.62
+ **TRAIN** Prec@1 86.81 Prec@5 99.38 Error@1 13.19 Error@5 0.62 Loss:1.963
+***[2020-02-17 06:14:04]*** TRAIN [epoch=042/305] loss = 1.963004, accuracy-1 = 86.81, accuracy-5 = 99.38
+------------------------------------------------------------------------------------------------------------------------------------------------------
+[valid] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ VALID [2020-02-17 06:14:04] [epoch=042/305][000/040] Time 0.38 (0.38) Data 0.25 (0.25) Loss 2.462 (2.462)  Prec@1 80.08 (80.08) Prec@5 100.00 (100.00) Teacher : acc@1=95.31, acc@5=100.00 Size=[256, 3, 32, 32]
+ VALID [2020-02-17 06:14:08] [epoch=042/305][039/040] Time 0.09 (0.10) Data 0.00 (0.01) Loss 5.005 (2.525)  Prec@1 75.00 (82.25) Prec@5 93.75 (98.80) Teacher : acc@1=94.46, acc@5=99.80 Size=[16, 3, 32, 32]
+ **VALID** accuracy drop :: @1=12.21, @5=1.00
+ **VALID** Prec@1 82.25 Prec@5 98.80 Error@1 17.75 Error@5 1.20 Loss:2.525
+***[2020-02-17 06:14:08]*** VALID [epoch=042/305] loss = 2.525253, accuracy@1 = 82.25, accuracy@5 = 98.80 | Best-Valid-Acc@1=82.95, Error@1=17.05
+[GPU-Memory-Usage on cuda:0 is 343932928 bytes, 343932.93 KB, 343.93 MB, 0.34 GB.]
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/checkpoint/seed-1010-basic.pth
+Find output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth exist, delete is at first before saving
+save checkpoint into output/search-shape/cifar10-ResNet56-CIFARX-Gumbel_0.1_5-0.47/seed-1010-KDT/seed-1010-last-info.pth
+
+***[2020-02-17 06:14:08]*** start epoch=043/305 Time Left: [02:16:27], LR=[0.096093 ~ 0.096093], scheduler=CosineAnnealingLR(warmup=5, max-epoch=300, current::epoch=43, iter=0.00, type=cosine, T-max=300, eta-min=0.0)
+[train] config :: auxiliary=-1.0, KD :: [alpha=0.90, temperature=4.00]
+ TRAIN [2020-02-17 06:14:08] [epoch=043/305][000/196] #LR=[0.096093~0.096093] epoch=043, iter=0.00# Time 0.44 (0.44) Data 0.26 (0.26) Loss 2.958 (2.958)  Prec@1 78.91 (78.91) Prec@5 97.27 (97.27) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
+ TRAIN [2020-02-17 06:14:22] [epoch=043/305][100/196] #LR=[0.096093~0.096093] epoch=043, iter=0.51# Time 0.14 (0.14) Data 0.00 (0.00) Loss 1.824 (1.959)  Prec@1 88.67 (86.91) Prec@5 99.61 (99.37) Teacher : acc@1=100.00, acc@5=100.00 Size=[256, 3, 32, 32]
